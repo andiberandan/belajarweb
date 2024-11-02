@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Website Kuliner</title>
+    <style>
+        /* CSS Styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+
+        header {
+            background-color: #ff6b6b;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #ff4757;
+        }
+
+        nav a {
+            padding: 14px 20px;
+            text-decoration: none;
+            color: white;
+        }
+
+        nav a:hover {
+            background-color: #ff6b6b;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        .section {
+            text-align: center;
+        }
+
+        .section img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .gallery {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .gallery img {
+            width: 30%;
+            height: auto;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        footer {
+            background-color: #ff6b6b;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* Button Style */
+        .btn-upload {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #ff4757;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .btn-upload:hover {
+            background-color: #ff6b6b;
+        }
+
+        /* Input File Style */
+        #imageUpload {
+            display: none;
+        }
+    </style>
+    <!-- Feather Icons CDN -->
+    <script src="https://unpkg.com/feather-icons"></script>
+</head>
+<body>
+    <header>
+        <img src="chef.png" alt="Chef Cartoon">
+        <h1>Andy's Culinary</h1>
+    </header>
+    <nav>
+        <h2> <a href="lokal.html">Kuliner Lokal</a></h2>
+        <h2><a href="internasional.html">Kuliner Internasional</a></h2>
+    </nav>
+
+    <div class="container">
+        <section class="section">
+            <h2>Foto Kuliner Favorit</h2>
+            <p>Di bawah ini adalah Foto makanan Lokal Indonesia yang diwakili Nasi Goreng dan makanan internasional yang diwakili oleh Pizza .</p>
+        </section>
+
+        <!-- Gallery for static images -->
+        <div class="gallery">
+            <img src="nasgor.jpg" alt="Nasi Goreng">
+            <img src="pizza.jpg" alt="Pizza">
+        </div>
+
+        <!-- Button to upload new image -->
+        <div class="section">
+            <label for="imageUpload" class="btn-upload">Unggah Gambar Kuliner</label>
+            <input type="file" id="imageUpload" accept="image/*">
+            <div id="imagePreview"></div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Copyright &copy; 2024 Andi Noval Irawan,S.Kom</p>
+    </footer>
+
+    <script>
+        // JavaScript to handle image preview and upload
+        document.getElementById("imageUpload").addEventListener("change", function() {
+            const file = this.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    const imgElement = document.createElement("img");
+                    imgElement.src = event.target.result;
+                    imgElement.alt = "Gambar Kuliner Baru";
+                    imgElement.style.width = "48%";
+                    imgElement.style.height = "auto";
+                    imgElement.style.marginBottom = "10px";
+                    imgElement.style.borderRadius = "8px";
+                    imgElement.style.boxShadow = "0 2px 8px rgba(0,0,0,0.1)";
+                    document.getElementById("imagePreview").appendChild(imgElement);
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+</body>
+</html>
